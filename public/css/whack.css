@@ -1,0 +1,51 @@
+h1{
+	text-align: center;
+	font-size: 2em;
+	position: relative;
+	left: 350;
+	font-family: ('comic-sans')
+}
+.spec{
+	font-size: 20px;
+	position: relative;
+	left: 250px;
+}
+.container{
+	width: 350px;
+	height: 350px;
+	position: relative;
+	left: 450px;
+	top: 50px;
+}
+.square {
+	width: 100px;
+	height: 100px;
+	background: red;
+	border: solid black 3px;
+	position: relative;
+	float: left;
+}
+.active{
+	background-image: url(/img/mole.jpg);
+}
+.difficulty{
+	font-size: 20px;
+	position: relative;
+	left: 25px;
+	top: 200px;
+}
+#back{
+	position: relative;
+	top: -250px;
+	left: 175px;
+}
+#score{
+	position: relative;
+	left: 275px;
+	font-size: 25px;
+}
+#c{
+	font-size: 15px;
+	position: relative;
+	top: 170px;
+}

@@ -11,7 +11,58 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+// ===============================================================
+Route::get('/', 'HomeController@showWelcome');
+
+// ===============================================================
+
+Route::get('/resume', 'HomeController@showResume');
+
+// ===============================================================
+
+Route::get('/portfolio', 'HomeController@showPortfolio');
+
+// ===============================================================
+
+Route::get('/sayhello/{name}', 'HomeController@sayHello');
+
+// ===============================================================
+
+Route::get('/rolldice/{guess}', 'HomeController@playDice');
+
+// ===============================================================
+
+Route::get('/hello-world', 'HomeController@showHello');
+
+// ===============================================================
+
+Route::get('/firstforms', 'HomeController@showFirstForm');
+
+// ===============================================================
+
+Route::get('/boxes', 'HomeController@showPositions');
+
+// ===============================================================
+
+Route::get('/pinkFloyd', 'HomeController@showFloydBox');
+
+// ===============================================================
+
+Route::resource('posts', 'PostsController');
+
+// ===============================================================
+
+Route::get('/calc', 'HomeController@showCalc');
+
+// ===============================================================
+
+Route::get('/maps', 'HomeController@showMaps');
+
+// ===============================================================
+
+Route::get('/simon', 'HomeController@playSimon');
+
+// ===============================================================
+
+Route::get('/whack', 'HomeController@playWhack');
+

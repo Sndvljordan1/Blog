@@ -1,0 +1,55 @@
+<!Doctype html>
+<html>
+	<head>
+		<title>Simon</title>
+		<link rel="stylesheet" type="text/css" href="/css/simoncss.css">
+	</head>
+	<body>
+		<section>
+			<main>
+				<button id='round'>Round:1</button>
+				<div class='container'>
+					<div id='diamond'>
+						<div class='triangle' id='up'></div>
+						<div class='triangle' id='left'></div>
+						<div class='triangle' id='right'></div>
+						<div class='triangle' id='down'></div>
+					</div>
+					<div class='sound'>
+						<audio src="sound/fail.wav" id='fail'></audio>
+						<audio src="sound/next-level.wav" id='moveOn'></audio>
+						<audio src="sound/start.mp3" id='start'></audio>
+						<audio src="sound/gameplay.mp3" id='woot'></audio>
+						<audio src="sound/chipper.wav" id='chipper'></audio>
+					</div>
+					<div id='invader'>
+						<div id='space-invader'></div>
+					</div>
+					<div id='square'></div>
+				</div>
+				
+			</main>
+		</section>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js'></script>
+		<script src='/js/simonjs.js'>
+
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+// ░░░░░░░▄▄▀▀▀▀▀▀▀▀▀▀▄▄█▄░░░░▄░░░░█░░░░░░░
+// ░░░░░░█▀░░░░░░░░░░░░░▀▀█▄░░░▀░░░░░░░░░▄░
+// ░░░░▄▀░░░░░░░░░░░░░░░░░▀██░░░▄▀▀▀▄▄░░▀░░
+// ░░▄█▀▄█▀▀▀▀▄░░░░░░▄▀▀█▄░▀█▄░░█▄░░░▀█░░░░
+// ░▄█░▄▀░░▄▄▄░█░░░▄▀▄█▄░▀█░░█▄░░▀█░░░░█░░░
+// ▄█░░█░░░▀▀▀░█░░▄█░▀▀▀░░█░░░█▄░░█░░░░█░░░
+// ██░░░▀▄░░░▄█▀░░░▀▄▄▄▄▄█▀░░░▀█░░█▄░░░█░░░
+// ██░░░░░▀▀▀░░░░░░░░░░░░░░░░░░█░▄█░░░░█░░░
+// ██░░░░░░░░░░░░░░░░░░░░░█░░░░██▀░░░░█▄░░░
+// ██░░░░░░░░░░░░░░░░░░░░░█░░░░█░░░░░░░▀▀█▄
+// ██░░░░░░░░░░░░░░░░░░░░█░░░░░█░░░░░░░▄▄██
+// ░██░░░░░░░░░░░░░░░░░░▄▀░░░░░█░░░░░░░▀▀█▄
+// ░▀█░░░░░░█░░░░░░░░░▄█▀░░░░░░█░░░░░░░▄▄██
+// ░▄██▄░░░░░▀▀▀▄▄▄▄▀▀░░░░░░░░░█░░░░░░░▀▀█▄
+// ░░▀▀▀▀░░░░░░░░░░░░░░░░░░░░░░█▄▄▄▄▄▄▄▄▄██
+// ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░</script>
+
+	</body>
+</html>
