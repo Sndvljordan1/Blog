@@ -4,17 +4,14 @@
 Edit Post
 @stop
 
-@section('content')
+@section('pageTitle')
     <div class="jumbotron">
         <h1>Edit Post</h1>
+@stop
+
+@section('content')
+    
         <div class="container">
-            @if (Session::has('successMessage'))
-                <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
-            @endif
-            @if (Session::has('errorMessage'))
-                <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
-            @endif
-            
             <h3>{{{ $post->title }}}</h3>
             <p>{{{ $post->body }}}</p>
         </div>

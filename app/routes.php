@@ -12,7 +12,7 @@
 */
 
 // ===============================================================
-Route::get('/', 'HomeController@showWelcome');
+Route::get('/', 'HomeController@showResume');
 
 // ===============================================================
 
@@ -65,4 +65,13 @@ Route::get('/simon', 'HomeController@playSimon');
 // ===============================================================
 
 Route::get('/whack', 'HomeController@playWhack');
+
+// ===============================================================
+
+Route::get('login', 'HomeController@showLogin');
+
+Route::post('login', 'HomeController@doLogin');
+
+Route::get('logout', 'HomeController@doLogout');
+
 

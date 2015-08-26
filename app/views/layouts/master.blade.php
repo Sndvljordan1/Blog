@@ -19,10 +19,24 @@
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
                     <div class="navbar-header">
-                        <a class="navbar-brand" href="{{{ action('HomeController@showResume') }}}">Resume</a>
-                        <a class="navbar-brand" href="{{{ action('HomeController@showPortfolio') }}}">Portfolio</a>
-                        <a class="navbar-brand active" href="{{{ action('PostsController@index') }}}">Blog</a>
-                        <a class="navbar-brand" href="{{{ action('PostsController@create') }}}">New Blog Post</a>
+                        <a class="navbar-brand" href="{{{ action('HomeController@showResume') }}}">Resume <span class="divider">|</span></a>
+                        <a class="navbar-brand" href="{{{ action('HomeController@showPortfolio') }}}">Portfolio <span class="divider">|</span></a>
+                        <a class="navbar-brand active" href="{{{ action('PostsController@index') }}}">Blog <span class="divider">|</span></a>
+                    </div>
+                    @if(Auth::check())
+                        <div class="navbar-collapse collapse">
+                            <a class="navbar-brand navbar-right" href="{{{ action('HomeController@doLogout') }}}">Logout</a>
+                            <a class="navbar-brand navbar-right" href="{{{ action('PostsController@create') }}}">New Blog Post <span class="divider">|</span></a>
+                            <a href="#" class="navbar-brand navbar-right">Welcome {{{ Auth::user()->first_name }}} <span class="divider">|</span></a>
+                    @else
+                            <a class="navbar-brand navbar-right" href="{{{ action('HomeController@showLogin') }}}">Login</a>
+                        
+                    @endif
+                        <form class="navbar-form navbar-right">
+                            {{{ Form::token() }}}
+                            <input type="text" name="search" id="search" class="search-query" placeholder="Search">
+                        </form>
+                        </div>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">
                     </div><!--/.navbar-collapse -->
@@ -32,7 +46,12 @@
     </section>
     <div class="container">
         @yield('pageTitle')
-       
+       @if (Session::has('successMessage'))
+            <div class="alert alert-success">{{{ Session::get('successMessage') }}}</div>
+        @endif
+        @if (Session::has('errorMessage'))
+            <div class="alert alert-danger">{{{ Session::get('errorMessage') }}}</div>
+        @endif
         @yield('content')
     </div>
     @yield('script')

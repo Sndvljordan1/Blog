@@ -122,4 +122,32 @@ class HomeController extends BaseController {
 	{
 		return View::make('whack');
 	}
+
+	// ===============================================================
+
+	public function showLogin()
+	{
+		return View::make('login');
+	}
+
+	public function doLogin()
+	{
+		$email = Input::get('email');
+		$password = Input::get('password');
+
+		if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+		    return Redirect::intended('/');
+		} else {
+			Session::flash('errorMessage', "Invalid Email or Password");
+			Log::warning("Attempted login by $email");
+		    return Redirect::action('HomeController@showLogin');
+		}
+	}
+
+	public function doLogout()
+	{
+		Auth::logout();
+		Session::flash('infoMessage', 'So long, have fun storming the castle!');
+		return Redirect::action('PostsController@index');
+	}
 }

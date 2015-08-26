@@ -2,6 +2,15 @@
 
 class PostsController extends \BaseController {
 
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->beforeFilter('auth', array('except' => array('index', 'show')));
+	}
+
+
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -9,7 +18,32 @@ class PostsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$posts = Post::paginate(5);
+		$query = Post::with('user');
+
+
+		$search = Input::get('search');
+
+		if ($search) {
+			$query->where('title', 'like', $search . '%');
+
+			$query->orWhere('title', 'like', '%' . $search . '%');
+
+			$query->orWhere('title', 'like', '%' . $search);
+
+
+			$query->orWhereHas('user', function($q) use ($search){
+				$q->where('first_name', 'like', $search . '%');
+			});
+
+			$query->orWhereHas('user', function($q) use ($search){
+				$q->Where('last_name', 'like', $search . '%');
+			});
+		}
+		
+
+		
+		$posts = $query->orderBy('created_at', 'DESC')->paginate(5);
+
 		return View::make('posts.index')->with('posts', $posts);
 	}
 
@@ -45,6 +79,7 @@ class PostsController extends \BaseController {
 			$post->title = Input::get('post-name');
 			$post->tldr = Input::get('tldr');
 			$post->body = Input::get('body');
+			$post->user_id = Auth::id();
 			$post->save();
 
 			Session::flash('successMessage', 'You have successfully created a post');
@@ -63,7 +98,10 @@ class PostsController extends \BaseController {
 	{
 		$post = Post::find($id);
 		if (!$post) {
-			Redirect::action('PostsController@index');
+			Session::flash('errorMessage', "Post with id of $id is not found");
+			Log::warning("Post with id of $id is not found");
+
+			App::abort(404);
 		}
 		return View::make('posts.show')->with('post', $post);
 	}
@@ -99,6 +137,11 @@ class PostsController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 	        // validation succeeded, create and save the post
+	        if(!$post){
+				Session::flash('errorMessage', "Post with id of $id is not found");
+				Log::warning("Post with id of $id is not found");
+				App::abort(404);
+			}
 			$post = Post::find($id);
 			$post->title = Input::get('post-name');
 			$post->tldr = Input::get('tldr');
@@ -120,7 +163,14 @@ class PostsController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		$post = Post::find($id)->delete();
+
+		$post = Post::find($id);
+
+		if(!$post){
+			Session::flash('errorMessage', "Post with id of $id is not found");
+
+			App::abort(404);
+		}
 		return Redirect::action('PostsController@index');
 	}
 

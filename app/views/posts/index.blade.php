@@ -8,10 +8,10 @@ Blog Posts
     <div class="container jumbotron">
         <h1>...</h1>
         @foreach($posts as $post)
-            <h3>{{{ $post->title }}}</h3>
+            <h3><a href="{{{ action('PostsController@show', $post->id) }}}">{{{ $post->title }}}</a></h3>
+            <h5>{{{ 'Posted By: ' . $post->user->first_name . ' ' . $post->user->last_name }}}</h5>
             <h6>{{{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h A') }}}</h6>
             <p>{{{ $post->tldr }}}</p>
-            <a class="btn" href="{{{ action('PostsController@show', $post->id) }}}">Read This Post</a>
         @endforeach
         <div>
             {{ $posts->links() }}
