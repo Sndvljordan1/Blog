@@ -28,14 +28,8 @@
                             <a class="navbar-brand navbar-right" href="{{{ action('HomeController@doLogout') }}}">Logout</a>
                             <a class="navbar-brand navbar-right" href="{{{ action('PostsController@create') }}}">New Blog Post <span class="divider">|</span></a>
                             <a href="#" class="navbar-brand navbar-right">Welcome {{{ Auth::user()->first_name }}} <span class="divider">|</span></a>
-                    @else
-                            <a class="navbar-brand navbar-right" href="{{{ action('HomeController@showLogin') }}}">Login</a>
-                        
                     @endif
-                        <form class="navbar-form navbar-right">
-                            {{{ Form::token() }}}
-                            <input type="text" name="search" id="search" class="search-query" placeholder="Search">
-                        </form>
+                        
                         </div>
                     </div>
                     <div id="navbar" class="navbar-collapse collapse">

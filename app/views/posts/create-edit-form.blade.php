@@ -11,7 +11,10 @@
         <div class="form-group @if($errors->has('body')) has-error @endif">
             <label for="body">Blog Body</label>
             <textarea class="form-control" name="body" placeholder="Snoop Bloggy Blogg" cols="30" rows="10">{{{ Input::old('body') }}}</textarea>
-        </div>    
+        </div>
+        <div class="form-control">
+            <input type="file" name="photo" id="photo">
+        </div>
             <input type="submit" class="btn btn-success">
 
             

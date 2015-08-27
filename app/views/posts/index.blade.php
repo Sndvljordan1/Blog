@@ -7,6 +7,9 @@ Blog Posts
 @section('content')
     <div class="container jumbotron">
         <h1>...</h1>
+        <form class="form align-right">
+            <input type="text" name="search" id="search" class="search-query" placeholder="Search">
+        </form>
         @foreach($posts as $post)
             <h3><a href="{{{ action('PostsController@show', $post->id) }}}">{{{ $post->title }}}</a></h3>
             <h5>{{{ 'Posted By: ' . $post->user->first_name . ' ' . $post->user->last_name }}}</h5>

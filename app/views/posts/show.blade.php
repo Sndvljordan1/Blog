@@ -6,11 +6,14 @@ Reader
 
 @section('content')
     <div class="jumbotron">
+        <form class="form align-right">
+            <input type="text" name="search" id="search" class="search-query" placeholder="Search">
+        </form>
         <h1>{{{ $post->title }}}</h1>
         <h3>{{{ $post->tldr }}}</h3>
         <h5>{{{ 'Posted By: ' . $post->user->first_name . ' ' . $post->user->last_name }}}</h5>
         <h6>{{{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i: A') }}}</h6>
-        <p>{{{ $post->body }}}</p>
+        {{ $post->body }}
     </div>
     {{-- @if(Auth::check() $$ Auth::id() == $post->user_id) --}}
     <a href="{{{ action('PostsController@index') }}}"><button class="btn btn-primary" ><span class="glyphicon glyphicon-fast-backward"></span> Back to All</button></a>

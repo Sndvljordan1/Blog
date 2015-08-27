@@ -1,5 +1,6 @@
 <?php
 
+
 class PostsController extends \BaseController {
 
 
@@ -23,7 +24,7 @@ class PostsController extends \BaseController {
 
 		$search = Input::get('search');
 
-		if ($search) {
+		if (!empty($search)) {
 			$query->where('title', 'like', $search . '%');
 
 			$query->orWhere('title', 'like', '%' . $search . '%');
@@ -66,7 +67,7 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-
+		
 		$validator = Validator::make(Input::all(), Post::$rules);
 
 	    // attempt validation
@@ -75,10 +76,15 @@ class PostsController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 	        // validation succeeded, create and save the post
+	    	if (Input::hasFile('photo'))
+			{
+			    grabPic();
+			}
+
 			$post = new Post;
-			$post->title = Input::get('post-name');
-			$post->tldr = Input::get('tldr');
-			$post->body = Input::get('body');
+			$post->title = htmlspecialchars(strip_tags(Input::get('post-name')));
+			$post->tldr = htmlspecialchars(strip_tags(Input::get('tldr')));
+			$post->body = htmlspecialchars(strip_tags(Input::get('body')));
 			$post->user_id = Auth::id();
 			$post->save();
 
@@ -102,7 +108,12 @@ class PostsController extends \BaseController {
 			Log::warning("Post with id of $id is not found");
 
 			App::abort(404);
+		}else{
+			$body = $post->body;
+			$Parsedown = new Parsedown();
+			$post->body = $Parsedown->text($body);
 		}
+		
 		return View::make('posts.show')->with('post', $post);
 	}
 
@@ -137,11 +148,6 @@ class PostsController extends \BaseController {
 			return Redirect::back()->withInput()->withErrors($validator);
 	    } else {
 	        // validation succeeded, create and save the post
-	        if(!$post){
-				Session::flash('errorMessage', "Post with id of $id is not found");
-				Log::warning("Post with id of $id is not found");
-				App::abort(404);
-			}
 			$post = Post::find($id);
 			$post->title = Input::get('post-name');
 			$post->tldr = Input::get('tldr');
@@ -175,4 +181,14 @@ class PostsController extends \BaseController {
 	}
 
 
+	public function grabPic()
+	{
+		if (Input::file('photo')->isValid())
+		{
+		    //
+		$file = Input::file('photo');
+		}
+
+
+	}
 }

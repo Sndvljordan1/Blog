@@ -13,7 +13,8 @@ Edit Post
     
         <div class="container">
             <h3>{{{ $post->title }}}</h3>
-            <p>{{{ $post->body }}}</p>
+            <h5>{{{ $post->tldr }}}</h5>
+            {{{ $post->body }}}
         </div>
     </div>
     <div class="container">
