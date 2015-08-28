@@ -22,7 +22,6 @@ Portfolio
                         <li><h4><a href="{{{ action('HomeController@showPositions') }}}" target="_blank">CSS Positions Experiment</a></h4></li>
                         <li><h4><a href="{{{ action('HomeController@showFloydBox') }}}" target="_blank">Adding a Background and Cleaning Edges</a></h4></li>
                         <li><h4><a href="{{{ action('HomeController@showCalc') }}}" target="_blank">Basic JavaScript Calculator</a></h4></li>
-                        <li><h4><a href="{{{ action('HomeController@showMaps') }}}" target="_blank">First Use of Google Maps API</a></h4></li>
                         <li><h4><a href="{{{ action('HomeController@playSimon') }}}" target="_blank">Simple Simon Game</a></h4></li>
                         <li><h4><a href="{{{ action('HomeController@playWhack') }}}" target="_blank">Simple Whack-A-Mole Game</a></h4></li>
                     </ul>

@@ -16,12 +16,12 @@
 
     <section>
         <main>
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="{{{ action('HomeController@showResume') }}}">Resume <span class="divider">|</span></a>
-                        <a class="navbar-brand" href="{{{ action('HomeController@showPortfolio') }}}">Portfolio <span class="divider">|</span></a>
-                        <a class="navbar-brand active" href="{{{ action('PostsController@index') }}}">Blog <span class="divider">|</span></a>
+            <nav class="navbar navbar-inverse navbar-fixed-top responsive">
+                <div class="container  responsive">
+                    <div class="navbar-header responsive">
+                        <a class="navbar-brand responsive" href="{{{ action('HomeController@showResume') }}}">Resume <span class="divider">|</span></a>
+                        <a class="navbar-brand responsive" href="{{{ action('HomeController@showPortfolio') }}}">Portfolio <span class="divider">|</span></a>
+                        <a class="navbar-brand active responsive" href="{{{ action('PostsController@index') }}}">Blog <span class="divider">|</span></a>
                     </div>
                     @if(Auth::check())
                         <div class="navbar-collapse collapse">

@@ -104,13 +104,6 @@ class HomeController extends BaseController {
 
 	// ===============================================================
 
-	public function showMaps()
-	{
-		return View::make('google_maps_api');
-	}
-
-	// ===============================================================
-
 	public function playSimon()
 	{
 		return View::make('simon');
