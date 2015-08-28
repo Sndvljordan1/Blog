@@ -8,17 +8,17 @@ Resume
 <body>
 
     
-    <div class="jumbotron">
-        <div class="container">
+    <div class="jumbotron responsive">
+        <div class="container responsive">
             <h1>Hello World!<small> Meet Jordan Sandoval</small></h1>
-            <img src="img/profile.jpg" class="img-thumbnail">
+            <img src="img/profile.jpg" class="img-thumbnail responsive">
         </div>
     </div>
 
     <div class="container">
       <!-- Example row of columns -->
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 responsive">
               <h3>About me</h3>
               <ul>
                 <li>Proficient with Microsoft Word, Excel, and Publisher</li>
@@ -28,7 +28,7 @@ Resume
                 <li>Strong math skills</li>
             </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 responsive">
                 <h3>Past Work Experience</h3>
                     <ul>
                         <li>Roofing Crew, Sunset Roofing, Midland, Texas   Summer 2010
@@ -39,7 +39,7 @@ Resume
                         <li>Porter, Roger’s Ford Sales LLC, Midland, Texas October 2014-May 2015</li>
                     </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 responsive">
                 <h3>Education</h3>
                     <ul>
                         <li>High School Graduate Class of 2012, Rouse High School , Leander, Texas</li>
@@ -47,8 +47,8 @@ Resume
                     </ul>
             </div>
         </div>
-        <div class="row">
-            <div class-"col-mid-4">
+        <div class="row responsive">
+            <div class-"col-mid-4 responsive">
                 <h3>Volunteer Work</h3>
                     <ul>
                         <li>Mission Work in Central Mexico – Spring 2003-2011</li>

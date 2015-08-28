@@ -5,9 +5,9 @@ Blog Posts
 @stop
 
 @section('content')
-    <div class="container jumbotron">
+    <div class="container jumbotron responsive">
         <h1>...</h1>
-        <form class="form align-right">
+        <form class="form align-right responsive">
             <input type="text" name="search" id="search" class="search-query" placeholder="Search">
         </form>
         @foreach($posts as $post)

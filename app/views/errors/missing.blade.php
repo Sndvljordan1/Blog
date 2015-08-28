@@ -6,7 +6,7 @@ Confusion
 @stop
 
 @section('content')
-<div class="container jumbotron">
+<div class="container jumbotron responsive">
     <h1>Whoopsie Daisy</h1>
     <h1><small> This page doesn't exist yet. We have our finest man working to fix that, in the meantime...</small></h1>
     {{-- <img src="/img/error.jpg" alt="Oh Noooooooo....." class="col-md-5"> --}}

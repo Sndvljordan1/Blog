@@ -5,8 +5,8 @@ Reader
 @stop
 
 @section('content')
-    <div class="jumbotron">
-        <form class="form align-right">
+    <div class="jumbotron responsive">
+        <form class="form align-right responsive">
             <input type="text" name="search" id="search" class="search-query" placeholder="Search">
         </form>
         <h1>{{{ $post->title }}}</h1>
@@ -16,7 +16,7 @@ Reader
         {{ $post->body }}
     </div>
     {{-- @if(Auth::check() $$ Auth::id() == $post->user_id) --}}
-    <a href="{{{ action('PostsController@index') }}}"><button class="btn btn-primary" ><span class="glyphicon glyphicon-fast-backward"></span> Back to All</button></a>
+    <a href="{{{ action('PostsController@index') }}}"><button class="btn btn-primary" ><span class="glyphicon glyphicon-fast-backward responsive"></span> Back to All</button></a>
 
     @if(Auth::check() && Auth::id() == $post->user_id)
     

@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<section>
-			<main>
+			<main class="responsive">
 				<div>
 					<h1>Whack-A-Mole</h1>
 				</div>
