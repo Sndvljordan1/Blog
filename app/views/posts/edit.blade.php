@@ -7,6 +7,7 @@ Edit Post
 @section('pageTitle')
     <div class="jumbotron responsive">
         <h1>Edit Post</h1>
+    
 @stop
 
 @section('content')
@@ -14,7 +15,7 @@ Edit Post
         <div class="container responsive">
             <h3>{{{ $post->title }}}</h3>
             <h5>{{{ $post->tldr }}}</h5>
-            {{ $post->body }}
+            {{ $post->parse }}
         </div>
     </div>
     <div class="container responsive">

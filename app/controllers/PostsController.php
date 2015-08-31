@@ -127,6 +127,9 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{	
 		$post = Post::find($id);
+		$body = $post->body;
+		$Parsedown = new Parsedown();
+		$post->parse = $Parsedown->text($body);
 		return View::make('posts.edit')->with('post', $post);
 	}
 
