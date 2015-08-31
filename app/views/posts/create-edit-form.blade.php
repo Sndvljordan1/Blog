@@ -2,9 +2,9 @@
  {{ Form::model($post, array('action' => array('PostsController@update', $post->id), 'method' => 'PUT')) }}
     {{ Form::token() }}
 
-        <div class="form-group @if($errors->has('post-name')) has-error @endif">
-            {{ Form::label('post-name', 'Title') }}
-            {{ Form::text('post-name', null, ['class' => 'form-control']) }}
+        <div class="form-group @if($errors->has('title')) has-error @endif">
+            {{ Form::label('title', 'Title') }}
+            {{ Form::text('title', null, ['class' => 'form-control']) }}
         </div>
         <div class="form-group @if($errors->has('tldr')) has-error @endif">
             {{ Form::label('tldr', 'TL;DR') }}
