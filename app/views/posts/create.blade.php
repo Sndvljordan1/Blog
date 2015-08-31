@@ -18,13 +18,13 @@ Create Post
          @foreach($errors->all() as $error)
             <div class="alert alert-warning" role="alert">{{{ $error }}}</div>
         @endforeach
-    {{ Form::open(array('action' => 'PostsController@store')) }}
         @include('posts.create-edit-form')
-    {{ Form::close() }}
+    
         
 
     </form>
     </div>
+
     
 @stop
 
