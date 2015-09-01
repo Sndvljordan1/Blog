@@ -1363,14 +1363,14 @@
             buttons.italic = makeButton("wmd-italic-button", "Italic - Ctrl+I", "glyphicon glyphicon-italic", bindCommand("doItalic"), group1);
             
             group2 = makeGroup(2);
-            buttons.link = makeButton("wmd-link-button", "Link - Ctrl+L", "glyphicon glyphicon-link", bindCommand(function (chunk, postProcessing) {
-                return this.doLinkOrImage(chunk, postProcessing, false);
-            }), group2);
+            // buttons.link = makeButton("wmd-link-button", "Link - Ctrl+L", "glyphicon glyphicon-link", bindCommand(function (chunk, postProcessing) {
+            //     return this.doLinkOrImage(chunk, postProcessing, false);
+            // }), group2);
             buttons.quote = makeButton("wmd-quote-button", "Blockquote - Ctrl+Q", "glyphicon glyphicon-subtitles", bindCommand("doBlockquote"), group2);
             buttons.code = makeButton("wmd-code-button", "Code Sample - Ctrl+K", "glyphicon glyphicon-hdd", bindCommand("doCode"), group2);
-            buttons.image = makeButton("wmd-image-button", "Image - Ctrl+G", "glyphicon glyphicon-picture", bindCommand(function (chunk, postProcessing) {
-                return this.doLinkOrImage(chunk, postProcessing, true);
-            }), group2);
+            // buttons.image = makeButton("wmd-image-button", "Image - Ctrl+G", "glyphicon glyphicon-picture", bindCommand(function (chunk, postProcessing) {
+            //     return this.doLinkOrImage(chunk, postProcessing, true);
+            // }), group2);
 
             group3 = makeGroup(3);
             buttons.olist = makeButton("wmd-olist-button", "Numbered List - Ctrl+O", "glyphicon glyphicon-sort-by-order", bindCommand(function (chunk, postProcessing) {

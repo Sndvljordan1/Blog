@@ -82,7 +82,7 @@ class PostsController extends \BaseController {
 			}
 
 			$post = new Post;
-			$post->title = htmlspecialchars(strip_tags(Input::get('post-name')));
+			$post->title = htmlspecialchars(strip_tags(Input::get('title')));
 			$post->tldr = htmlspecialchars(strip_tags(Input::get('tldr')));
 			$post->body = htmlspecialchars(strip_tags(Input::get('body')));
 			$post->user_id = Auth::id();
@@ -152,7 +152,7 @@ class PostsController extends \BaseController {
 	    } else {
 	        // validation succeeded, create and save the post
 			$post = Post::find($id);
-			$post->title = Input::get('post-name');
+			$post->title = Input::get('title');
 			$post->tldr = Input::get('tldr');
 			$post->body = Input::get('body');
 			$post->save();
