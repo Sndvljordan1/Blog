@@ -5,6 +5,7 @@
         Converter = require("./Markdown.Converter").Converter;
     } else {
         output = window.Markdown;
+        console.log(window.Markdown);
         Converter = output.Converter;
     }
         

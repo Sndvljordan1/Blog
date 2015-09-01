@@ -18,6 +18,7 @@ Create Post
          @foreach($errors->all() as $error)
             <div class="alert alert-warning" role="alert">{{{ $error }}}</div>
         @endforeach
+        {{ Form::open(array('action' => 'PostsController@store')) }}
         @include('posts.create-edit-form')
     
         
@@ -28,3 +29,18 @@ Create Post
     
 @stop
 
+@section('script')
+<script src="/js/Markdown.Sanitizer.js"></script>
+<script src="/js/Markdown.Converter.js"></script>
+<script src="/js/Markdown.Editor.js"></script>
+<script type="text/javascript">
+    (function () {
+        
+        var converter = new Markdown.Converter();
+        
+        var editor = new Markdown.Editor(converter);
+        
+        editor.run();
+    })();
+</script>
+@stop

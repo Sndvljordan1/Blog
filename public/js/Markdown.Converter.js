@@ -479,10 +479,8 @@ else
                         )*
                     )
                     \]
-
                     [ ]?                    // one optional space
                     (?:\n[ ]*)?             // one optional newline followed by spaces
-
                     \[
                     (.*?)                   // id = $3
                     \]
@@ -613,10 +611,8 @@ else
                     !\[
                     (.*?)           // alt text = $2
                     \]
-
                     [ ]?            // one optional space
                     (?:\n[ ]*)?     // one optional newline followed by spaces
-
                     \[
                     (.*?)           // id = $3
                     \]

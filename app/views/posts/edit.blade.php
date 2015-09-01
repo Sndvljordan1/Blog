@@ -22,6 +22,7 @@ Edit Post
      @foreach($errors->all() as $error)
             <div class="alert alert-warning" role="alert">{{{ $error }}}</div>
         @endforeach
+        {{ Form::model($post, array('action' => array('PostsController@update', $post->id), 'method' => 'POST')) }}
         @include('posts.create-edit-form')
     
         
@@ -30,4 +31,20 @@ Edit Post
     </form>
     </div>
 
+@stop
+
+@section('script')
+<script src="/js/Markdown.Sanitizer.js"></script>
+<script src="/js/Markdown.Converter.js"></script>
+<script src="/js/Markdown.Editor.js"></script>
+<script type="text/javascript">
+    (function () {
+        
+        var converter = new Markdown.Converter();
+        
+        var editor = new Markdown.Editor(converter);
+        
+        editor.run();
+    })();
+</script>
 @stop
