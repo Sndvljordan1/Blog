@@ -68,29 +68,13 @@ class PostsController extends \BaseController {
 	public function store()
 	{
 		
-		$validator = Validator::make(Input::all(), Post::$rules);
-
-	    // attempt validation
-	    if ($validator->fails()) {
-			Session::flash('errorMessage', 'Something went wrong...');
-			return Redirect::back()->withInput()->withErrors($validator);
-	    } else {
-	        // validation succeeded, create and save the post
-	    	if (Input::hasFile('photo'))
-			{
-			    grabPic();
-			}
-
-			$post = new Post;
-			$post->title = htmlspecialchars(strip_tags(Input::get('title')));
-			$post->tldr = htmlspecialchars(strip_tags(Input::get('tldr')));
-			$post->body = htmlspecialchars(strip_tags(Input::get('body')));
-			$post->user_id = Auth::id();
-			$post->save();
-
-			Session::flash('successMessage', 'You have successfully created a post');
-			return Redirect::action('PostsController@index');
-	    }
+		$post = new Post();
+        // validation succeeded, create and save the post
+		Log::info("Post created successfully.");
+		Log::info("Log Message", array('context' => Input::all()));
+	
+		return $this->validateAndSave($post);
+	    
 	}
 
 
@@ -108,10 +92,6 @@ class PostsController extends \BaseController {
 			Log::warning("Post with id of $id is not found");
 
 			App::abort(404);
-		}else{
-			$body = $post->body;
-			$Parsedown = new Parsedown();
-			$post->body = $Parsedown->text($body);
 		}
 		
 		return View::make('posts.show')->with('post', $post);
@@ -127,9 +107,6 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{	
 		$post = Post::find($id);
-		$body = $post->body;
-		$Parsedown = new Parsedown();
-		$post->parse = $Parsedown->text($body);
 		return View::make('posts.edit')->with('post', $post);
 	}
 
@@ -142,24 +119,13 @@ class PostsController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validator = Validator::make(Input::all(), Post::$rules);
-
-	    // attempt validation
-	    if ($validator->fails()) {
-			Session::flash('errorMessage', 'Something went wrong...');
-
-			return Redirect::back()->withInput()->withErrors($validator);
-	    } else {
-	        // validation succeeded, create and save the post
-			$post = Post::find($id);
-			$post->title = Input::get('title');
-			$post->tldr = Input::get('tldr');
-			$post->body = Input::get('body');
-			$post->save();
-			Session::flash('successMessage', 'You have successfully updated a post');
-
-			return Redirect::action('PostsController@index');
-	    }
+		$post = Post::findOrFail($id);
+		if (!$post) {
+			App::abort(404);
+		}
+		
+		return $this->validateAndSave($post);
+	    
 		
 	}
 
@@ -180,18 +146,33 @@ class PostsController extends \BaseController {
 
 			App::abort(404);
 		}
+		$post->delete();
 		return Redirect::action('PostsController@index');
 	}
 
 
-	public function grabPic()
+	public function validateAndSave($post)
 	{
-		if (Input::file('photo')->isValid())
-		{
-		    //
-		$file = Input::file('photo');
+		// create the validator
+	    $validator = Validator::make(Input::all(), Post::$rules);
+	    // attempt validation
+	    if ($validator->fails()) {
+	    	Session::flash('errorMessage', 'Ohh no! Something went wrong...You should be seeing some errors down below...');
+	    	Log::info('Validator failed', Input::all());
+	        // validation failed, redirect to the post create page with validation errors and old inputs
+	        return Redirect::back()->withInput()->withErrors($validator);
+	    } else {
+	    	if (Input::hasFile('image')) {
+	    		$file = Input::file('image');
+	    		$post->uploadImage($file);
+	    	}
+	    	
+			$post->title   = Input::get('title');
+			$post->body    = Input::get('body');
+			$post->user_id = Auth::id();
+			$post->save();
+
+			return Redirect::action('PostsController@show', array($post->id));
 		}
-
-
 	}
 }

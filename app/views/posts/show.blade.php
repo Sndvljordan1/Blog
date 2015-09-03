@@ -12,8 +12,11 @@ Reader
         <h1>{{{ $post->title }}}</h1>
         <h3>{{{ $post->tldr }}}</h3>
         <h5>{{{ 'Posted By: ' . $post->user->first_name . ' ' . $post->user->last_name }}}</h5>
-        <h6>{{{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i: A') }}}</h6>
-        {{ $post->body }}
+        <h6>{{{ $post->created_at->setTimezone('America/Chicago')->format('l, F jS Y @ h:i A') }}}</h6>
+        {{ $post->renderBody() }}
+        <div class="col-md-3">
+            <img src="{{ $post->image }}" alt="">
+        </div>
     </div>
     {{-- @if(Auth::check() $$ Auth::id() == $post->user_id) --}}
     <a href="{{{ action('PostsController@index') }}}"><button class="btn btn-primary" ><span class="glyphicon glyphicon-fast-backward responsive"></span> Back to All</button></a>

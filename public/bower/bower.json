@@ -1,0 +1,17 @@
+{
+  "name": "Bowowow",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Sndvljordan1/Blog",
+  "authors": [
+    "Jordan Sandoval <sndvljordan@aol.com>"
+  ],
+  "description": "Personal styler",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

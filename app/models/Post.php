@@ -15,6 +15,22 @@ class Post extends BaseModel
         'body'       => 'required|max:10000'
     );
 
+    public function renderBody() {
+        $parse = new Parsedown;
+        $config = HTMLPurifier_Config::createDefault();
+        $purifier = new HTMLPurifier($config);
+        $body = $parse->text($this->body);
 
+        return $clean_html = $purifier->purify($body);
+       
+    }
+
+    public function uploadImage($file)
+    {
+        $name = $file->getClientOriginalName();
+        $path = '/uploadedimgs/';
+        $file->move(public_path() . $path, $name);
+        $this->image = $path . $name;
+    }
 }
 

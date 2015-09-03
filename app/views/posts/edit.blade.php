@@ -22,7 +22,7 @@ Edit Post
      @foreach($errors->all() as $error)
             <div class="alert alert-warning" role="alert">{{{ $error }}}</div>
         @endforeach
-        {{ Form::model($post, array('action' => array('PostsController@update', $post->id), 'method' => 'PUT')) }}
+        {{ Form::model($post, array('action' => array('PostsController@update', $post->id), 'method' => 'PUT', 'files' => true)) }}
         @include('posts.create-edit-form')
         <div class="btn-group btn-group-justified">
             <div class="btn">
